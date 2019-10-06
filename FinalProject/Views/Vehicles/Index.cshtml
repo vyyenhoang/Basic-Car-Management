@@ -1,0 +1,104 @@
+﻿@model IEnumerable<FinalProject.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.VehicleType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+           
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.EngineSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.NumberOfDoors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.Colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.VehicleType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @{<span>$</span>}
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @{<span>$</span>}
+            @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.SoldDate)*@
+
+            @if (item.SoldDate > DateTime.MinValue)
+            {
+                <lable>Sold</lable>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.EngineSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.NumberOfDoors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.Colour)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Make.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.VehicleId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.VehicleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.VehicleId })
+        </td>
+    </tr>
+}
+
+</table>
